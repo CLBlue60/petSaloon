@@ -1,39 +1,56 @@
-let pets = [];
+const pets = [
+  {
+    name: "Buddy",
+    age: 3,
+    gender: "Male",
+    service: "Grooming",
+    breed: "Golden Retriever",
+  },
+  {
+    name: "Luna",
+    age: 2,
+    gender: "Female",
+    service: "Vaccination",
+    breed: "Labrador",
+  },
+  {
+    name: "Max",
+    age: 4,
+    gender: "Male",
+    service: "Check-up",
+    breed: "Beagle",
+  },
+];
 
-let petSaloon
- = {
-    name:"The Petty Pet",
-    address:{
-        street:"Guerrero Dr",
-        zip:"75006"
-    },
-    phone:"6066066969"
- }
-
- console.log(petSaloon)
-
-
-let pet1 = {
-    name:"Scooby",
-    age:"60",
-    gender:"Male"
+function displayPetCount() {
+  const petCountElement = document.getElementById("petCount");
+  petCountElement.textContent = `Total Pets Registered: ${pets.length}`;
 }
-let pet2 = {
-  name: "Garfield",
-  age: "55",
-  gender: "Male",
-};
-let pet3 = {
-  name: "Scrappy",
-  age: "30",
-  gender: "Male",
-};
 
-pets.push(pet1,pet2,pet3);
-console.log(pets);
+function displayPetNames() {
+  const petListElement = document.getElementById("petList");
+  petListElement.innerHTML = "";
 
-function displayNames(){
-    console.log(pets[0].name)
-    
-
+  pets.forEach((pet) => {
+    const listItem = document.createElement("li");
+    listItem.textContent = pet.name;
+    petListElement.appendChild(listItem);
+  });
 }
+
+function displayAverageAge() {
+  const totalAge = pets.reduce((sum, pet) => sum + pet.age, 0);
+  const averageAge = (totalAge / pets.length).toFixed(1);
+
+  let averageAgeElement = document.getElementById("averageAge");
+  if (!averageAgeElement) {
+    averageAgeElement = document.createElement("p");
+    averageAgeElement.id = "averageAge";
+    document.querySelector("section").appendChild(averageAgeElement);
+  }
+  averageAgeElement.textContent = `Average Age of Pets: ${averageAge} years`;
+}
+
+displayPetCount();
+displayPetNames();
+displayAverageAge();
