@@ -2,42 +2,75 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background: #f9f9f9;
+  background-color: #f9f9f9;
   color: #333;
 }
 
 header {
-  background: #4caf50;
+  background-color: #4caf50;
   color: white;
-  padding: 20px;
+  padding: 1rem;
   text-align: center;
 }
 
-main {
-  padding: 20px;
+header a {
+  color: white;
+  text-decoration: underline;
+  margin-right: 1rem;
+}
+
+h1, h2 {
+  margin: 0.5rem 0;
 }
 
 section {
-  background: #fff;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
 }
 
-h2 {
-  color: #4caf50;
+footer {
+  text-align: center;
+  margin-top: 2rem;
 }
 
-#petList {
-  list-style: none;
+footer a {
+  color: #45a049;
+  text-decoration:underline;
+}
+
+ul {
+  list-style-type: none;
   padding: 0;
 }
 
-#petList li {
-  padding: 10px 0;
-  border-bottom: 1px solid #ccc;
+li {
+  margin: 0.5rem 0;
 }
 
-#petList li:last-child {
-  border-bottom: none;
+form {
+  max-width: 400px;
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+}
+
+form label {
+  margin-top: 0.5rem;
+}
+
+form input, form select, form button {
+  margin-top: 0.2rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+form button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #45a049;
 }
