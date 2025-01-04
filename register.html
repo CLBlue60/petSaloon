@@ -4,44 +4,72 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Register a Pet</title>
-  <link rel="stylesheet" href="/styles/mystyle.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
+  <header class="bg-success text-white text-center py-3">
     <h1>Register Your Pet</h1>
   </header>
-  <form id="pet-form">
-    <label for="name">Pet Name:</label>
-    <input type="text" id="name" required>
-
-    <label for="age">Age:</label>
-    <input type="number" id="age" required>
-
-    <label for="gender">Gender:</label>
-    <select id="gender" required>
-      <option value="Male">Male</option>
-      <option value="Female">Female</option>
-    </select>
-
-    <label for="breed">Breed:</label>
-    <input type="text" id="breed" required>
-
-    <label for="service">Service:</label>
-    <input type="text" id="service" required>
-
-    <label for="type">Type:</label>
-    <select id="type" required>
-      <option value="Dog">Dog</option>
-      <option value="Cat">Cat</option>
-      <option value="Bird">Bird</option>
-    </select>
-
-    <button type="submit">Register Pet</button>
-    <button type="reset">Clear</button>
-  </form>
-  <footer>
-    <a href="index.html">Back to Home</a>
+  <section class="container my-4">
+    <form id="pet-form" class="p-4 border rounded bg-light">
+      <div class="mb-3">
+        <label for="name" class="form-label">Pet Name:</label>
+        <input type="text" id="name" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label for="age" class="form-label">Age:</label>
+        <input type="number" id="age" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label for="gender" class="form-label">Gender:</label>
+        <select id="gender" class="form-select" required>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="breed" class="form-label">Breed:</label>
+        <input type="text" id="breed" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label for="service" class="form-label">Service:</label>
+        <input type="text" id="service" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label for="type" class="form-label">Type:</label>
+        <select id="type" class="form-select" required>
+          <option value="Dog">Dog</option>
+          <option value="Cat">Cat</option>
+          <option value="Bird">Bird</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-success">Register Pet</button>
+      <button type="reset" class="btn btn-warning">Clear</button>
+    </form>
+  </section>
+    <section id="pet-list" class="container my-4">
+    <h2>Registered Pets</h2>
+    <table class="table table-bordered">
+      <thead class="table-success">
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Gender</th>
+          <th>Breed</th>
+          <th>Service</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody id="pet-display">
+        <!-- Rows will be dynamically added here -->
+      </tbody>
+    </table>
+  </section>
+  <footer class="text-center mt-4">
+    <a href="index.html" class="btn btn-success">Back to Home</a>
   </footer>
-  <script src="app.js"></script>
+  <script src="/scripts/register.js"></script>
 </body>
 </html>

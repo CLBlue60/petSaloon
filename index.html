@@ -1,34 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles/mystyle.css" />
-    <title>The Petty Pet</title>
-  </head>
-  <body>
-    <header>
-      <h1>The Petty Pet</h1>
-      <h2>We'll get your petty pet correct!</h2>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="services.html">Services</a>
-        <a href="register.html">Register</a>
-      </nav>
-    </header>
-    <section id="salon-info">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Petty Pet</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="bg-success text-white text-center py-3">
+    <h1>The Petty Pet</h1>
+    <p>We'll get your petty pet correct!</p>
+  </header>
+  <section id="salon-info" class="container my-4">
     <h2>Salon Information</h2>
-    <p><strong>Name:</strong> The Petty Pet</p>
-    <p><strong>Address:</strong> 123 Guerrero Dr</p>
+    <p><strong>Name:</strong> Furry Friends Salon</p>
+    <p><strong>Address:</strong> 123 Pet Lane, Petville</p>
     <p><strong>Phone:</strong> (123) 456-7890</p>
   </section>
-  <section id="pet-list">
+  <section id="pet-list" class="container my-4">
     <h2>Registered Pets</h2>
-    <ul id="pet-display"></ul>
+    <table class="table table-bordered">
+      <thead class="table-success">
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Gender</th>
+          <th>Breed</th>
+          <th>Service</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody id="pet-display">
+        <!-- Rows will be dynamically added here -->
+      </tbody>
+    </table>
   </section>
-  <footer>
-    <a href="register.html">Register a Pet</a>
-    <script src="/scripts/app.js"></script>
+  <footer class="text-center mt-4">
+    <a href="register.html" class="btn btn-success">Register a Pet</a>
   </footer>
+  <script src="/scripts/register.js"></script>
   </body>
 </html>
