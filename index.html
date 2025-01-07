@@ -14,13 +14,17 @@
   </header>
   <section id="salon-info" class="container my-4">
     <h2>Salon Information</h2>
-    <p><strong>Name:</strong> Furry Friends Salon</p>
-    <p><strong>Address:</strong> 123 Pet Lane, Petville</p>
+    <p><strong>Name:</strong> The Petty Pet</p>
+    <p><strong>Address:</strong> 123 Guerrero Dr, Carrollton</p>
     <p><strong>Phone:</strong> (123) 456-7890</p>
   </section>
   <section id="pet-list" class="container my-4">
     <h2>Registered Pets</h2>
-    <table class="table table-bordered">
+     <div>
+      <p>Total: <span id="total">0</span></p>
+      <p>Grooming: <span id="gTotal">0</span></p>
+    </div>
+    <table class="table table-bordered border-warning">
       <thead class="table-success">
         <tr>
           <th>#</th>
@@ -29,7 +33,7 @@
           <th>Gender</th>
           <th>Breed</th>
           <th>Service</th>
-          <th>Type</th>
+          <th>Species</th>
         </tr>
       </thead>
       <tbody id="pet-display">
