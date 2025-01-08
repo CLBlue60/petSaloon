@@ -4,7 +4,7 @@ function Service(description, price) {
 }
 
 
-const services = [];
+let services = [];
 
 $(document).ready(function () {
 
@@ -12,8 +12,8 @@ $(document).ready(function () {
     event.preventDefault();
 
 
-    const description = $("#description").val().trim();
-    const price = parseFloat($("#price").val());
+    let description = $("#description").val().trim();
+    let price = parseFloat($("#price").val());
 
     // Validate inputs
     if (!description || !price || price <= 0) {
@@ -22,7 +22,7 @@ $(document).ready(function () {
     }
 
 
-    const newService = new Service(description, price);
+    let newService = new Service(description, price);
     services.push(newService);
 
     // Display success notification
@@ -34,7 +34,7 @@ $(document).ready(function () {
   });
 
   $("#serviceForm").on("submit", function (event) {
-    const form = this;
+    let form = this;
     if (!form.checkValidity()) {
       event.preventDefault();
       event.stopPropagation();
@@ -44,7 +44,7 @@ $(document).ready(function () {
 
   // Function to display notifications
   function showNotification(message, type) {
-    const notification = $("#notification");
+    let notification = $("#notification");
     notification
       .removeClass("d-none alert-success alert-danger")
       .addClass(`alert alert-${type}`)
