@@ -3,13 +3,16 @@ function Service(description, price) {
   this.price = price;
 }
 
-let services = [];
+let services = JSON.parse(localStorage.getItem("services")) || []; // Retrieve services from localStorage or initialize as empty
 
 $(document).ready(function () {
+  // Load existing services on page load
+  updateServicesList();
+
   $("#serviceForm").on("submit", function (event) {
     event.preventDefault();
 
-    let form = this; // Reference to the form element
+    let form = this;
     let description = $("#description").val().trim();
     let price = parseFloat($("#price").val());
 
@@ -24,13 +27,50 @@ $(document).ready(function () {
     let newService = new Service(description, price);
     services.push(newService);
 
+    // Save services to localStorage
+    localStorage.setItem("services", JSON.stringify(services));
+
     // Display success notification
     showNotification("Service registered successfully!", "success");
 
-    // Clear the form
+    // Update the displayed list and clear inputs
+    updateServicesList();
     form.reset();
     form.classList.remove("was-validated");
   });
+
+  // Function to update the services list display
+  function updateServicesList() {
+    let servicesList = $("#servicesList");
+
+    // Clear the list and repopulate it
+    servicesList.empty();
+
+    if (services.length === 0) {
+      servicesList.append(`
+        <li class="list-group-item text-center text-muted">No services added yet.</li>
+      `);
+    } else {
+      services.forEach((service, index) => {
+        servicesList.append(`
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            ${service.description} - $${service.price.toFixed(2)}
+            <button class="btn btn-danger btn-sm remove-service" data-index="${index}">
+              Remove
+            </button>
+          </li>
+        `);
+      });
+    }
+
+    // Add remove functionality for each service
+    $(".remove-service").on("click", function () {
+      let index = $(this).data("index");
+      services.splice(index, 1); // Remove the service from the array
+      localStorage.setItem("services", JSON.stringify(services)); // Update localStorage
+      updateServicesList(); // Refresh the display
+    });
+  }
 
   // Function to display notifications
   function showNotification(message, type) {
