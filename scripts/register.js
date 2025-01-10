@@ -29,6 +29,7 @@ let pet3 = new Pet("Tweety", 1, "Male", "Canary", "Day-Care", "Bird");
 salon.pets.push(pet1, pet2, pet3);
 
 displayRow();
+populateServicesDropdown();
 
 // Display pets in table
 function displayRow() {
@@ -53,14 +54,13 @@ function displayRow() {
 }
 
 function deletePet(petId) {
-  salon.pets.splice(petId, 1); // Remove the pet from the array
-  displayRow(); // Re-render the table to reflect changes
-  displayInfo(); // Update the totals
+  salon.pets.splice(petId, 1);
+  displayRow();
+  displayInfo();
 }
 
-
 function registerPet(event) {
-  event.preventDefault(); // Prevent form submission from reloading the page
+  event.preventDefault();
 
   let name = document.getElementById("name").value;
   let age = parseInt(document.getElementById("age").value);
@@ -70,15 +70,14 @@ function registerPet(event) {
   let species = document.getElementById("species").value;
 
   let newPet = new Pet(name, age, gender, breed, service, species);
-  salon.pets.push(newPet); // Add the new pet to the array
+  salon.pets.push(newPet);
 
-  alert(`${name} has been registered!`);
-  document.getElementById("pet-form").reset(); // Clear the form fields
+  showNotification(`${name} has been registered!`, "success");
+  document.getElementById("pet-form").reset();
 
-  displayRow(); // Update the table
-  displayInfo(); // Update the totals
+  displayRow(); 
+  displayInfo();
 }
-
 
 function displayInfo() {
   // Update total pets
@@ -94,9 +93,44 @@ function displayInfo() {
   groomingSpan.innerHTML = groomingCounter;
 }
 
+// Populate services dropdown with localStorage services
+function populateServicesDropdown() {
+  let services = JSON.parse(localStorage.getItem("services")) || [];
+  let serviceDropdown = document.getElementById("service");
+
+  if (serviceDropdown) {
+    serviceDropdown.innerHTML = "";
+    if (services.length === 0) {
+      serviceDropdown.innerHTML = `<option disabled>No services available</option>`;
+    } else {
+      services.forEach((service) => {
+        serviceDropdown.innerHTML += `
+          <option value="${service.description}">${service.description}</option>
+        `;
+      });
+    }
+  }
+}
+
+// Show notification
+function showNotification(message, type) {
+  let notification = document.getElementById("notification");
+  if (notification) {
+    notification.className = `alert alert-${type}`;
+    notification.innerText = message;
+    notification.style.display = "block";
+
+    setTimeout(() => {
+      notification.style.display = "none";
+    }, 3000);
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   displayRow();
-  displayInfo(); // Initialize totals
+  displayInfo();
+  populateServicesDropdown();
+
   let petForm = document.getElementById("pet-form");
   if (petForm) {
     petForm.addEventListener("submit", registerPet);

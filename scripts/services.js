@@ -66,9 +66,9 @@ $(document).ready(function () {
     // Add remove functionality for each service
     $(".remove-service").on("click", function () {
       let index = $(this).data("index");
-      services.splice(index, 1); // Remove the service from the array
-      localStorage.setItem("services", JSON.stringify(services)); // Update localStorage
-      updateServicesList(); // Refresh the display
+      services.splice(index, 1);
+      localStorage.setItem("services", JSON.stringify(services));
+      updateServicesList();
     });
   }
 
